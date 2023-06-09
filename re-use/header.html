@@ -1,0 +1,34 @@
+<section id="header">
+    <div class="img-holder"><a href="#"><img src="img/download.JPEG" alt="" class="logo"></a></div>
+
+    <div class="search-container">
+        <form method="GET" action="search.php">
+            <input type="search" id="form1" class="form-control" name="search_query" />
+
+        </form>
+        <button type="button" class=" search-btn">
+            <i class="fas fa-search"></i>
+        </button>
+    </div>
+
+    <div class="nav-holder-container">
+        <ul class="nav-holder">
+            <li> <a href="index.php">Extension</a></li>
+            <li> <a href="department.php">Department</a></li>
+            <li> <a href="campus.php">Campus</a></li>
+            <li> <a href="administrator.php">Administrators </a></li>
+        </ul>
+        <div id="admin-container" class="">
+            <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle user-action"> Admn <b
+                    class="caret"></b></a>
+            <div class="dropdown-menu">
+                <a href="#" class="dropdown-item"><i class="fa fa-user-o"></i> Profile</a></a>
+                <!-- <a href="#" class="dropdown-item"><i class="fa fa-calendar-o"></i> Calendar</a></a> -->
+                <a href="#" class="dropdown-item"><i class="fa fa-sliders"></i> Settings</a></a>
+                <div class="dropdown-divider"></div>
+                <a href="../AUTH/login.php" class="dropdown-item"><i class="material-icons">&#xE8AC;</i>
+                    Logout</a></a>
+            </div>
+        </div>
+    </div>
+</section>
