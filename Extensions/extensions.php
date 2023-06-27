@@ -1,81 +1,19 @@
 <?php
-include "db_conn.php";
+include "../re-use/db_conn.php";
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- google font -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merienda+One">
-
-    <!-- generic header link -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-
-    <!-- google icons such the search icon -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
-    <!-- the message and alarm box link -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <!-- drop down functionality -->
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-
-    <!-- drop down menu -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-
-
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <!-- custom css -->
-    <link rel="stylesheet" href="css/custom.css">
-
-    <title>Departments </title>
-</head>
+<?php
+include("../re-use/links.html");
+?>
 
 <body>
-    <section id="header">
-        <div class="img-holder"><a href="#"><img src="../AUTH/img/download.JPEG" alt="" class="logo"></a></div>
 
-        <div class="search-container">
-            <form method="GET" action="search.php">
-                <input type="search" id="form1" class="form-control" name="search_query" />
-
-            </form>
-            <button type="button" class=" search-btn">
-                <i class="fas fa-search"></i>
-            </button>
-        </div>
-
-        <div class="nav-holder-container">
-            <ul class="nav-holder">
-                <li> <a href="index.php">Extension</a></li>
-                <li> <a href="department.php">Department</a></li>
-                <li> <a href="campus.php">Campus</a></li>
-                <li> <a href="administrator.php">Administrators </a></li>
-            </ul>
-            <div id="admin-container" class="">
-                <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle user-action"> Admn <b class="caret"></b></a>
-                <div class="dropdown-menu">
-                    <a href="#" class="dropdown-item"><i class="fa fa-user-o"></i> Profile</a></a>
-                    <!-- <a href="#" class="dropdown-item"><i class="fa fa-calendar-o"></i> Calendar</a></a> -->
-                    <a href="#" class="dropdown-item"><i class="fa fa-sliders"></i> Settings</a></a>
-                    <div class="dropdown-divider"></div>
-                    <a href="../AUTH/login.php" class="dropdown-item"><i class="material-icons">&#xE8AC;</i>
-                        Logout</a></a>
-                </div>
-            </div>
-        </div>
-    </section>
-
+    <?php
+    include("../re-use/header.html");
+    ?>
 
     <div class="container">
         <?php
@@ -89,6 +27,7 @@ include "db_conn.php";
         ?>
 
         <?php
+
         // Pagination settings
         $resultsPerPage = 10; // Number of results to display per page
         $page = isset($_GET['page']) ? $_GET['page'] : 1; // Current page number
@@ -97,40 +36,40 @@ include "db_conn.php";
         $startFrom = ($page - 1) * $resultsPerPage;
 
         // Fetch the total number of results
-        $totalResults = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `depts`"));
+        $totalResults = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `trialexcel`"));
 
         // Calculate the total number of pages
         $totalPages = ceil($totalResults / $resultsPerPage);
         ?>
 
-
         <!-- Modal ADD NEW -->
         <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <?php
-            include "db_conn.php";
+            include "../re-use/db_conn.php";
 
             if (isset($_POST["submit"])) {
                 $campus_code = $_POST['ccode'];
-                $department_code = $_POST['deptcode'];
-                $owner_assigned = $_POST['ownerassigned'];
+                $extension_number = $_POST['extnumber'];
+                $owner_assigned = $_POST['owerassigned'];
                 $department_name = $_POST['deptname'];
 
-                $sql = "INSERT INTO `depts`(`id`, `ccode`, `deptcode`, `ownerassigned`, `deptname`) VALUES (NULL,'$campus_code','$department_code','$owner_assigned','$department_name')";
+                $sql = "INSERT INTO `trialexcel`(`id`, `ccode`, `extnumber`, `owerassigned`, `deptname`) VALUES (NULL,'$campus_code','$extension_number','$owner_assigned','$department_name')";
 
                 $result = mysqli_query($conn, $sql);
 
                 if ($result) {
-                    header("Location: index.php?msg=New record created successfully");
+                    header("Location: extensions.php?msg=New record created successfully");
                 } else {
                     echo "Failed: " . mysqli_error($conn);
                 }
             }
 
             ?>
+
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content rounded-popup">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Add New User</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Add New Extension</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -141,13 +80,13 @@ include "db_conn.php";
                             </div>
 
                             <div class="mb-3">
-                                <label class="form-label">Department Code:</label>
-                                <input type="number" class="form-control" name="deptcode">
+                                <label class="form-label">Extension Number</label>
+                                <input type="number" class="form-control" name="extnumber">
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label">Owner Assigned:</label>
-                                <input type="text" class="form-control" name="ownerassigned">
+                                <input type="text" class="form-control" name="owerassigned">
                             </div>
 
                             <div class="mb-3">
@@ -166,31 +105,34 @@ include "db_conn.php";
         </div>
 
         <a class="btn" style="background-color: blue; color:white; margin-bottom:15px" data-bs-toggle="modal" data-bs-target="#myModal">Add
-            New Department</a>
+            New Extension</a>
 
+
+
+        <!-- display -->
         <div class="table-container">
             <table class="table table-hover text-center">
                 <thead class="custom-background">
                     <tr>
                         <th scope="col">ID</th>
-                        <th scope="col">CampusCode</th>
-                        <th scope="col">DeptCode</th>
+                        <th scope="col">Campus Code</th>
+                        <th scope="col">Extension Number</th>
                         <th scope="col">Owner Assigned</th>
-                        <th scope="col">DepartmentName</th>
+                        <th scope="col">Department Name</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-                    $sql = "SELECT * FROM `depts` LIMIT $startFrom, $resultsPerPage";
+                    $sql = "SELECT * FROM `trialexcel` LIMIT $startFrom, $resultsPerPage";
                     $result = mysqli_query($conn, $sql);
                     while ($row = mysqli_fetch_assoc($result)) {
                     ?>
                         <tr>
                             <td><?php echo $row["id"] ?></td>
                             <td><?php echo $row["ccode"] ?></td>
-                            <td><?php echo $row["deptcode"] ?></td>
-                            <td><?php echo $row["ownerassigned"] ?></td>
+                            <td><?php echo $row["extnumber"] ?></td>
+                            <td><?php echo $row["owerassigned"] ?></td>
                             <td><?php echo $row["deptname"] ?></td>
                             <td>
 
@@ -209,7 +151,6 @@ include "db_conn.php";
                 </tbody>
             </table>
         </div>
-
         <div class="pagination-container">
             <?php if ($totalPages > 1) : ?>
                 <nav aria-label="Page navigation">
@@ -290,7 +231,6 @@ include "db_conn.php";
         </div>
     </div>
 
-
     <script>
         var myModal = document.getElementById('myModal2');
         myModal.addEventListener('show.bs.modal', function(event) {
@@ -299,7 +239,6 @@ include "db_conn.php";
             document.getElementById('deleteId').value = id;
         });
     </script>
-
 
     <!-- Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">

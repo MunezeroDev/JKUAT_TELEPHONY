@@ -1,19 +1,19 @@
 <?php
-include "./re-use/db_conn.php";
+include "../re-use/db_conn.php";
 $id = $_GET["id"];
 
 if (isset($_POST["submit"])) {
     $campus_code = $_POST['ccode'];
-    $department_code = $_POST['deptcode'];
-    $owner_assigned = $_POST['ownerassigned'];
+    $extension_Number = $_POST['extNumber'];
+    $owner_assigned = $_POST['owerassigned'];
     $department_name = $_POST['deptname'];
 
-    $sql = "UPDATE `depts` SET `ccode`='$campus_code',`deptcode`='$department_code',`ownerassigned`='$owner_assigned',`deptname`='$department_name' WHERE id = $id";
+    $sql = "UPDATE `trialexcel` SET `ccode`='$campus_code',`extNumber`='$extension_Number',`owerassigned`='$owner_assigned',`deptname`='$department_name' WHERE id = $id";
 
     $result = mysqli_query($conn, $sql);
 
     if ($result) {
-        header("Location: index.php?msg=Data updated successfully");
+        header("Location: extensions.php?msg=Data updated successfully");
     } else {
         echo "Failed: " . mysqli_error($conn);
     }
@@ -25,12 +25,12 @@ if (isset($_POST["submit"])) {
 <html lang="en">
 
 <?php
-include("./re-use/links.html");
+include("../re-use/links.html");
 ?>
 
 <body>
     <?php
-    include("./re-use/header.html");
+    include("../re-use/header.html");
     ?>
 
     <div class="container">
@@ -40,7 +40,7 @@ include("./re-use/links.html");
         </div>
 
         <?php
-        $sql = "SELECT * FROM `depts` WHERE id = $id LIMIT 1";
+        $sql = "SELECT * FROM `trialexcel` WHERE id = $id LIMIT 1";
         $result = mysqli_query($conn, $sql);
         $row = mysqli_fetch_assoc($result);
         ?>
@@ -54,14 +54,14 @@ include("./re-use/links.html");
                     </div>
 
                     <div class="col">
-                        <label class="form-label">Department Code:</label>
-                        <input type="number" class="form-control" name="deptcode" value="<?php echo $row['deptcode'] ?>">
+                        <label class="form-label">Extension Number:</label>
+                        <input type="number" class="form-control" name="extNumber" value="<?php echo $row['extnumber'] ?>">
                     </div>
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label">Owner Assigned:</label>
-                    <input type="text" class="form-control" name="ownerassigned" value="<?php echo $row['ownerassigned'] ?>">
+                    <input type="text" class="form-control" name="owerassigned" value="<?php echo $row['owerassigned'] ?>">
                 </div>
 
                 <div class="mb-3">
@@ -71,7 +71,7 @@ include("./re-use/links.html");
 
                 <div>
                     <button type="submit" class="btn btn-success" name="submit">Update</button>
-                    <a href="index.php" class="btn btn-danger">Cancel</a>
+                    <a href="extensions.php" class="btn btn-danger">Cancel</a>
                 </div>
             </form>
         </div>
