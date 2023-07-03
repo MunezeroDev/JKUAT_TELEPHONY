@@ -2,7 +2,7 @@
 include "../re-use/db_conn.php";
 
 $id = $_POST["id"];
-$sql = "DELETE FROM `depts` WHERE id = $id";
+$sql = "DELETE  FROM `depts` WHERE id = $id";
 
 $result = mysqli_query($conn, $sql);
 

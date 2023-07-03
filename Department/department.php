@@ -92,9 +92,21 @@ include("../re-use/links.html");
             </div>
         </div>
 
-        <a class="btn" style="background-color: blue; color:white; margin-bottom:15px" data-bs-toggle="modal" data-bs-target="#myModal">Add
-            New Department</a>
+        <!-- button -->
+        <div class="btn-div" style="display: flex;">
+            <a class="btn" style="background-color: blue; color:white; margin-bottom:8px; " data-bs-toggle="modal" data-bs-target="#myModal">Add
+                New Department</a>
+        </div>
 
+        <!-- search -->
+        <div class="search" style=" width:100%; margin-bottom:10px">
+            <?php
+            include("search.php");
+            ?>
+
+        </div>
+
+        <!-- table diplay -->
         <div class="table-container">
             <table class="table table-hover text-center">
                 <thead class="custom-background">
@@ -137,12 +149,13 @@ include("../re-use/links.html");
             </table>
         </div>
 
+        <!-- pagination -->
         <?php
         include("../re-use/pagination.php");
         ?>
     </div>
 
-
+    <!-- delete modal -->
     <div class="modal fade" id="myModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content rounded-popup">
@@ -164,13 +177,10 @@ include("../re-use/links.html");
         </div>
     </div>
 
-    <script>
-        var myModal = document.getElementById('myModal2');
-        myModal.addEventListener('show.bs.modal', function(event) {
-            var button = event.relatedTarget;
-            var id = button.getAttribute('data-id');
-            document.getElementById('deleteId').value = id;
-        });
+    <div id="search_result"></div>
+
+    <!-- Google CDN -->
+    <script src=" https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js">
     </script>
 
     <!-- Bootstrap -->

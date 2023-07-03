@@ -104,8 +104,19 @@ include("../re-use/links.html");
             </div>
         </div>
 
-        <a class="btn" style="background-color: blue; color:white; margin-bottom:15px" data-bs-toggle="modal" data-bs-target="#myModal">Add
-            New Extension</a>
+
+        <!-- button -->
+        <div class="btn-div" style="display: flex;">
+            <a class="btn" style="background-color: blue; color:white; margin-bottom:8px; " data-bs-toggle="modal" data-bs-target="#myModal">Add
+                New Extension</a>
+        </div>
+
+        <!-- search -->
+        <div class="search" style=" width:100%; margin-bottom:10px">
+            <?php
+            include("search.php");
+            ?>
+        </div>
 
 
 
@@ -238,6 +249,13 @@ include("../re-use/links.html");
             var id = button.getAttribute('data-id');
             document.getElementById('deleteId').value = id;
         });
+    </script>
+
+
+    <div id="search_result"></div>
+
+    <!-- Google CDN -->
+    <script src=" https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js">
     </script>
 
     <!-- Bootstrap -->
