@@ -103,7 +103,6 @@ include("../re-use/links.html");
             <?php
             include("search.php");
             ?>
-
         </div>
 
         <!-- table diplay -->
@@ -181,6 +180,17 @@ include("../re-use/links.html");
 
     <!-- Google CDN -->
     <script src=" https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js">
+    </script>
+
+
+    <!-- modal script  -->
+    <script>
+        var myModal = document.getElementById('myModal2');
+        myModal.addEventListener('show.bs.modal', function(event) {
+            var button = event.relatedTarget;
+            var id = button.getAttribute('data-id');
+            document.getElementById('deleteId').value = id;
+        });
     </script>
 
     <!-- Bootstrap -->

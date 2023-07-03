@@ -1,15 +1,75 @@
-<section id="header" style="margin-bottom: 10px; padding-top:10px;">
-    <div class="img-holder"><a href="#"><img src="img/download.JPEG" alt="" class="logo"></a></div>
-    <!-- 
-    <div class="search-container">
-        <form method="GET" action="search.php">
-            <input type="search" id="form1" class="form-control" name="search_query" />
+<style>
+    #header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        /* padding: 15px 50px 15px 15px; */
+        margin-bottom: 20px;
+        background-color: #21BC10;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+        z-index: 999;
+        position: sticky;
+        top: 0;
+        left: 0;
+        height: 70px;
+    }
 
-        </form>
-        <button type="button" class=" search-btn">
-            <i class="fas fa-search"></i>
-        </button>
-    </div> -->
+    .img-holder {
+        height: 100%;
+        width: 10%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .img-holder img {
+        height: 50px;
+    }
+
+    .nav-holder-container {
+        height: 100%;
+        width: 80%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+        padding-right: 100px;
+    }
+
+    .nav-holder {
+        display: flex;
+    }
+
+    .nav-holder li {
+        list-style: none;
+        padding: 0 20px;
+    }
+
+    .nav-holder li a {
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 700px;
+        color: whitesmoke;
+        transition: 0.3s ease;
+    }
+
+    .nav-holder li a:hover {
+        color: #747070;
+        transition: 0.5s;
+    }
+
+
+    #admin-container {
+        width: 10%;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-end;
+        padding-right: 30px;
+    }
+</style>
+
+
+<section id="header">
+    <div class=" img-holder"><img src="../img/download.JPEG" alt="" class="logo"></div>
 
     <div class="nav-holder-container">
         <ul class="nav-holder">
@@ -18,7 +78,10 @@
             <li> <a href="../Campus/campus.php">Campus</a></li>
             <li> <a href="../Admin/admin.php">Administration </a></li>
         </ul>
-        <div id="admin-container" style="margin-right: 20px;">
+    </div>
+
+    <div id="admin-container">
+        <div class="admin-wrapper">
             <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle user-action"
                 style="color:beige; font-weight: 700;"> User <b class="caret"></b></a>
             <div class="dropdown-menu">
@@ -26,7 +89,7 @@
                 <!-- <a href="#" class="dropdown-item"><i class="fa fa-calendar-o"></i> Calendar</a></a> -->
                 <a href="#" class="dropdown-item"><i class="fa fa-sliders"></i> Settings</a></a>
                 <div class="dropdown-divider"></div>
-                <a href="../AUTH/login.php" class="dropdown-item"><i class="material-icons">&#xE8AC;</i>
+                <a href="../index.php" class="dropdown-item"><i class="material-icons">&#xE8AC;</i>
                     Logout</a></a>
             </div>
         </div>
