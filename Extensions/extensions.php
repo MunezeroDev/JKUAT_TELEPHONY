@@ -49,11 +49,11 @@ include("../re-use/links.html");
 
             if (isset($_POST["submit"])) {
                 $campus_code = $_POST['ccode'];
-                $extension_number = $_POST['extnumber'];
-                $owner_assigned = $_POST['owerassigned'];
+                $extension_number = $_POST['extenson'];
+                $owner_assigned = $_POST['position'];
                 $department_name = $_POST['deptname'];
 
-                $sql = "INSERT INTO `trialexcel`(`id`, `ccode`, `extnumber`, `owerassigned`, `deptname`) VALUES (NULL,'$campus_code','$extension_number','$owner_assigned','$department_name')";
+                $sql = "INSERT INTO `trialexcel`(`id`, `ccode`, `extenson`, `position`, `deptname`) VALUES (NULL,'$campus_code','$extension_number','$owner_assigned','$department_name')";
 
                 $result = mysqli_query($conn, $sql);
 
@@ -81,12 +81,12 @@ include("../re-use/links.html");
 
                             <div class="mb-3">
                                 <label class="form-label">Extension Number</label>
-                                <input type="number" class="form-control" name="extnumber">
+                                <input type="number" class="form-control" name="extenson">
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label">Owner Assigned:</label>
-                                <input type="text" class="form-control" name="owerassigned">
+                                <input type="text" class="form-control" name="position">
                             </div>
 
                             <div class="mb-3">
@@ -142,8 +142,8 @@ include("../re-use/links.html");
                         <tr>
                             <td><?php echo $row["id"] ?></td>
                             <td><?php echo $row["ccode"] ?></td>
-                            <td><?php echo $row["extnumber"] ?></td>
-                            <td><?php echo $row["owerassigned"] ?></td>
+                            <td><?php echo $row["extension"] ?></td>
+                            <td><?php echo $row["position"] ?></td>
                             <td><?php echo $row["deptname"] ?></td>
                             <td>
 

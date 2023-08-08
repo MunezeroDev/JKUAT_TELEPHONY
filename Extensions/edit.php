@@ -4,11 +4,11 @@ $id = $_GET["id"];
 
 if (isset($_POST["submit"])) {
     $campus_code = $_POST['ccode'];
-    $extension_Number = $_POST['extNumber'];
-    $owner_assigned = $_POST['owerassigned'];
+    $extension_Number = $_POST['extenson'];
+    $owner_assigned = $_POST['position'];
     $department_name = $_POST['deptname'];
 
-    $sql = "UPDATE `trialexcel` SET `ccode`='$campus_code',`extNumber`='$extension_Number',`owerassigned`='$owner_assigned',`deptname`='$department_name' WHERE id = $id";
+    $sql = "UPDATE `trialexcel` SET `ccode`='$campus_code',`extenson`='$extension_Number',`position`='$owner_assigned',`deptname`='$department_name' WHERE id = $id";
 
     $result = mysqli_query($conn, $sql);
 
@@ -55,13 +55,13 @@ include("../re-use/links.html");
 
                     <div class="col">
                         <label class="form-label">Extension Number:</label>
-                        <input type="number" class="form-control" name="extNumber" value="<?php echo $row['extnumber'] ?>">
+                        <input type="number" class="form-control" name="extenson" value="<?php echo $row['extenson'] ?>">
                     </div>
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label">Owner Assigned:</label>
-                    <input type="text" class="form-control" name="owerassigned" value="<?php echo $row['owerassigned'] ?>">
+                    <input type="text" class="form-control" name="position" value="<?php echo $row['position'] ?>">
                 </div>
 
                 <div class="mb-3">

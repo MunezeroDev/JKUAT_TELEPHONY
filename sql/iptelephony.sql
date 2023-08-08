@@ -142,8 +142,8 @@ DROP TABLE IF EXISTS `trialexcel`;
 CREATE TABLE `trialexcel` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ccode` varchar(80) NOT NULL,
-  `extnumber` int(11) NOT NULL,
-  `owerassigned` varchar(100) NOT NULL,
+  `extenson` int(11) NOT NULL,
+  `position` varchar(100) NOT NULL,
   `deptname` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1091 DEFAULT CHARSET=latin1;
